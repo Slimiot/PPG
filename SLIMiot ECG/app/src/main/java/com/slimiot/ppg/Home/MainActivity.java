@@ -175,6 +175,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Line added to set the y-axis range **********************************************
+//
+//        YAxis yAxisLeft = chartSleep.getAxisLeft();
+//
+//// Set a custom formatter for the y-axis values
+//        yAxisLeft.setValueFormatter(new IAxisValueFormatter() {
+//            @Override
+//            public String getFormattedValue(float value, AxisBase axis) {
+//                // Format the y-axis value as needed
+//                return String.format("%.2f", value);
+//            }
+//        });
+//        yAxisLeft.setAxisMinimum(Float.NaN);   // Automatically calculate the minimum value
+//        yAxisLeft.setAxisMaximum(Float.NaN);   // Automatically calculate the maximum value
+//        yAxisLeft.setGranularityEnabled(true);
+//
+//        // Line above added to set the y-axis range **********************************************
+
+
         Random random = new Random();
         int result = random.nextInt(10) + 1;
         for(int i=0;i<1;i++){
@@ -501,8 +520,36 @@ public class MainActivity extends AppCompatActivity {
             ecg_y_diff = ecg_y_diff / 0.6f;
             XAxis xAxisECG = chartSleep.getXAxis();
             YAxis yAxis = chartSleep.getAxisLeft();
-            yAxis.setAxisMaximum(ecg_y_max+ecg_y_diff*0.2f); // set the maximum y-axis value
-            yAxis.setAxisMinimum(ecg_y_min-ecg_y_diff*0.2f);
+//            yAxis.setAxisMaximum(ecg_y_max+ecg_y_diff*0.2f); // set the maximum y-axis value
+//            yAxis.setAxisMinimum(ecg_y_min-ecg_y_diff*0.2f);
+
+
+            float minY = chartSleep.getYMin();
+            float maxY = chartSleep.getYMax();
+            float range =  (maxY - minY)/ 0.6f;
+
+            yAxis.setAxisMaximum(maxY+range*0.2f); // set the maximum y-axis value
+            yAxis.setAxisMinimum(minY-range*0.2f);
+
+//            yAxisLeft.setAxisMinimum(minY - range * 0.1f); // Set 10% padding below the minimum value
+//            yAxisLeft.setAxisMaximum(maxY + range * 0.1f); /
+
+            Log.i("READ_UI_DATA_SlCMx", "ecg_y_max = "+ecg_y_max+" "+"ecg_y_min = "+ecg_y_min);
+
+            Log.i("READ_UI_DATA_SlCMx", "ecg_y_max = "+maxY+" "+"ecg_y_min = "+minY);
+
+
+
+            // Adjust the y-axis range based on the new value
+//            float minY = chartSleep.getYMin();
+//            float maxY = chartSleep.getYMax();
+//            float range = maxY - minY;
+//
+//            yAxis.setAxisMinimum(minY - range * 0.1f); // Set 10% padding below the minimum value
+//            yAxis.setAxisMaximum(maxY + range * 0.1f);
+
+
+
             YAxis yAxisRight = chartSleep.getAxisRight();
             yAxisRight.setEnabled(false);
 //            yAxisRight.setAxisMaximum(ecg_y_max+ecg_y_diff*0.2f); // set the maximum y-axis value
