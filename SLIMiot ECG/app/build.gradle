@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.slimiot.ecg'
+    namespace 'com.slimiot.ppg'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.slimiot.ecg"
+        applicationId "com.slimiot.ppg"
         minSdk 24
         targetSdk 33
         versionCode 1

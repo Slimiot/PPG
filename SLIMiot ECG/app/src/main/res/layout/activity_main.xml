@@ -61,7 +61,26 @@
                     </TextView>
 
                     <TextView
-                        android:id="@+id/data_readings"
+                        android:id="@+id/data_readings_red"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/red"
+                        android:gravity="center"
+                        android:text="TextView" />
+
+                    <TextView
+                        android:id="@+id/data_readings_blue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/colorBlue"
+                        android:gravity="center"
+                        android:text="TextView" />
+
+                    <TextView
+                        android:id="@+id/data_reading"
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

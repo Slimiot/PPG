@@ -43,7 +43,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/textfont"
-            android:text="Please fill the following field for the ECG Analysis :"
+            android:text="Please fill the following field for the PPG Analysis :"
             android:textColor="@color/textColor"
             android:textSize="20sp"/>
 

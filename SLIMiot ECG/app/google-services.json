@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1034636618673:android:1d5d94f44dbfe7f3ffab90",
         "android_client_info": {
-          "package_name": "com.slimiot.ecg"
+          "package_name": "com.slimiot.ppg"
         }
       },
       "oauth_client": [
