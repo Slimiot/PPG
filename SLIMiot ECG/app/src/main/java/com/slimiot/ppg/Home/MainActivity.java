@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i("x_ecg_value_runn",String.valueOf(x_ecg));
 //            dataSet_data.notifyDataSetChanged();
 //            lineData_data.notifyDataChanged();
-//            chartSleep.notifyDataSetChanged();
+//            chartSleep.notify DataSetChanged();
 //            chartSleep.setVisibleXRangeMinimum(0);
 //            chartSleep.setVisibleXRangeMaximum(500);
 //            chartSleep.moveViewTo(dataSet_data.getEntryCount() - 5, 50f, YAxis.AxisDependency.LEFT);
