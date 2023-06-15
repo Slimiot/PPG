@@ -65,7 +65,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textStyle="bold"
                         android:textColor="@color/red"
+                        android:gravity="center"
+                        android:text="TextView" />
+
+                    <TextView
+                        android:id="@+id/data_readings_green"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorGreen"
                         android:gravity="center"
                         android:text="TextView" />
 
@@ -74,13 +85,42 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textStyle="bold"
                         android:textColor="@color/colorBlue"
+                        android:gravity="center"
+                        android:text="TextView" />
+                    <TextView
+                        android:id="@+id/data_readings_yellow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:textColor="#FFBF00"
+                        android:gravity="center"
+                        android:text="TextView" />
+                    <TextView
+                        android:id="@+id/data_readings_black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:text="TextView" />
+                    <TextView
+                        android:id="@+id/data_readings_violet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:textColor="@color/purple_500"
                         android:gravity="center"
                         android:text="TextView" />
 
                     <TextView
                         android:id="@+id/data_reading"
                         android:visibility="gone"
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

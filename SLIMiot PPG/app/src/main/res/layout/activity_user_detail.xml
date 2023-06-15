@@ -70,7 +70,7 @@
                 android:textColor="@color/textColor"
                 android:layout_marginRight="10dp"
                 android:textSize="@dimen/text_size"
-                android:text="1890"/>
+                android:text="1822"/>
 
 
         </LinearLayout>
@@ -98,7 +98,7 @@
                 android:textColor="@color/textColor"
                 android:layout_marginRight="10dp"
                 android:textSize="@dimen/text_size"
-                android:text="1901"/>
+                android:text="2A5F"/>
 
 
         </LinearLayout>

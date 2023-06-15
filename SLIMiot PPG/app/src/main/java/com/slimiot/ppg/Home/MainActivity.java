@@ -50,25 +50,46 @@ public class MainActivity extends AppCompatActivity {
     private BroadcastReceiver mDeviceConnectionReciever;
     private LineChart chartSleep;
     private TextView readingCount , closeGraph;
-    private TextView readingCountRed,readingCountBlue;
+    private TextView readingCountRed,readingCountBlue,readingCountGreen;
+    private TextView readingCountYellow,readingCountBlack,readingCountViolet;
     private List<Entry> entries_data;
     private List<Entry> entries_data2;
+    private List<Entry> entries_data3;
+    private List<Entry> entries_data4;
+    private List<Entry> entries_data5;
+    private List<Entry> entries_data6;
     private LineDataSet dataSet_data;
     private LineDataSet dataSet_data2;
+    private LineDataSet dataSet_data3;
+    private LineDataSet dataSet_data4;
+    private LineDataSet dataSet_data5;
+    private LineDataSet dataSet_data6;
     private LineData lineData_data;
     float x_ecg = 0;
     float x_ecg2 = 0;
+    float x_ecg3 = 0;
+    float x_ecg4 = 0;
+    float x_ecg5 = 0;
+    float x_ecg6 = 0;
     float ecg_y_max = 0;
     float ecg_y_min = 0;
     float ecg_y_diff;
 
     boolean ecg_graph_update;
     boolean ecg_graph_update2;
+    boolean ecg_graph_update3;
+    boolean ecg_graph_update4;
+    boolean ecg_graph_update5;
+    boolean ecg_graph_update6;
     private Handler sleepHandler;
     int countECG=0;
 
     int countECGRed =0 ;
+    int countECGGreen =0 ;
     int countECGBlue =0 ;
+    int countECGYellow =0 ;
+    int countECGBlack =0 ;
+    int countECGViolet =0 ;
 
     private boolean firstOpen = true;
     private BleDevice bleDevice;
@@ -86,30 +107,71 @@ public class MainActivity extends AppCompatActivity {
         readingCount = findViewById(R.id.data_reading);
         readingCountRed = findViewById(R.id.data_readings_red);
         readingCountBlue = findViewById(R.id.data_readings_blue);
+        readingCountGreen = findViewById(R.id.data_readings_green);
+        readingCountYellow = findViewById(R.id.data_readings_yellow);
+        readingCountBlack = findViewById(R.id.data_readings_black);
+        readingCountViolet = findViewById(R.id.data_readings_violet);
         closeGraph = findViewById(R.id.txtCloseGraph);
         ecg_graph_update = false;
         ecg_graph_update2 = false;
+        ecg_graph_update3 = false;
+        ecg_graph_update4 = false;
+        ecg_graph_update5 = false;
+        ecg_graph_update6 = false;
         entries_data = new ArrayList<>();
         entries_data2 = new ArrayList<>();
-        dataSet_data = new LineDataSet(entries_data, "Data");
+        entries_data3 = new ArrayList<>();
+        entries_data4 = new ArrayList<>();
+        entries_data5 = new ArrayList<>();
+        entries_data6 = new ArrayList<>();
+        dataSet_data = new LineDataSet(entries_data, "");
         dataSet_data.setDrawCircles(false);
         dataSet_data.setCubicIntensity(2000f);
         dataSet_data.setDrawValues(false);
         dataSet_data.setLineWidth(3f);
 
-        dataSet_data2 = new LineDataSet(entries_data2, "Data");
+        dataSet_data2 = new LineDataSet(entries_data2, "");
         dataSet_data2.setDrawCircles(false);
         dataSet_data2.setCubicIntensity(2000f);
         dataSet_data2.setDrawValues(false);
         dataSet_data2.setLineWidth(3f);
         dataSet_data2.setColor(Color.RED);
 
+        dataSet_data3 = new LineDataSet(entries_data3, "");
+        dataSet_data3.setDrawCircles(false);
+        dataSet_data3.setCubicIntensity(2000f);
+        dataSet_data3.setDrawValues(false);
+        dataSet_data3.setLineWidth(3f);
+        dataSet_data3.setColor(Color.GREEN);
+
+        dataSet_data4 = new LineDataSet(entries_data4, "");
+        dataSet_data4.setDrawCircles(false);
+        dataSet_data4.setCubicIntensity(2000f);
+        dataSet_data4.setDrawValues(false);
+        dataSet_data4.setLineWidth(3f);
+        dataSet_data4.setColor(Color.rgb(255,191,0));
+
+        dataSet_data5 = new LineDataSet(entries_data5, "");
+        dataSet_data5.setDrawCircles(false);
+        dataSet_data5.setCubicIntensity(2000f);
+        dataSet_data5.setDrawValues(false);
+        dataSet_data5.setLineWidth(3f);
+        dataSet_data5.setColor(Color.BLACK);
+
+        dataSet_data6 = new LineDataSet(entries_data6, "");
+        dataSet_data6.setDrawCircles(false);
+        dataSet_data6.setCubicIntensity(2000f);
+        dataSet_data6.setDrawValues(false);
+        dataSet_data6.setLineWidth(3f);
+        dataSet_data6.setColor(Color.rgb(143,0,255));
+
+
 
         // on ecg
 //        BleActivities.onECG();
         // off it on destroy
         //
-        lineData_data = new LineData(dataSet_data,dataSet_data2);
+        lineData_data = new LineData(dataSet_data,dataSet_data2,dataSet_data3,dataSet_data4,dataSet_data5,dataSet_data6);
         chartSleep.setData(lineData_data);
 
 // *****************************************************************
@@ -141,9 +203,37 @@ public class MainActivity extends AppCompatActivity {
         dataSet_data2.setLineWidth(3f);
         dataSet_data2.setColor(Color.RED);
 
+        dataSet_data3 = new LineDataSet(entries_data3, "");
+        dataSet_data3.setDrawCircles(false);
+        dataSet_data3.setCubicIntensity(2000f);
+        dataSet_data3.setDrawValues(false);
+        dataSet_data3.setLineWidth(3f);
+        dataSet_data3.setColor(Color.GREEN);
+
+        dataSet_data4 = new LineDataSet(entries_data4, "");
+        dataSet_data4.setDrawCircles(false);
+        dataSet_data4.setCubicIntensity(2000f);
+        dataSet_data4.setDrawValues(false);
+        dataSet_data4.setLineWidth(3f);
+        dataSet_data4.setColor(Color.rgb(255,191,0));
+
+        dataSet_data5 = new LineDataSet(entries_data5, "");
+        dataSet_data5.setDrawCircles(false);
+        dataSet_data5.setCubicIntensity(2000f);
+        dataSet_data5.setDrawValues(false);
+        dataSet_data5.setLineWidth(3f);
+        dataSet_data5.setColor(Color.BLACK);
+
+        dataSet_data6 = new LineDataSet(entries_data6, "");
+        dataSet_data6.setDrawCircles(false);
+        dataSet_data6.setCubicIntensity(2000f);
+        dataSet_data6.setDrawValues(false);
+        dataSet_data6.setLineWidth(3f);
+        dataSet_data6.setColor(Color.rgb(143,0,255));
 
 //            chartECG.setDragDecelerationFrictionCoef(0.9f);
-        lineData_data = new LineData(dataSet_data,dataSet_data2);
+//        lineData_data = new LineData(dataSet_data,dataSet_data2,dataSet_data3);
+        lineData_data = new LineData(dataSet_data,dataSet_data2,dataSet_data3,dataSet_data4,dataSet_data5,dataSet_data6);
         chartSleep.setData(lineData_data);
 
         LineData data = chartSleep.getData();
@@ -216,6 +306,10 @@ public class MainActivity extends AppCompatActivity {
 
         dataSet_data.notifyDataSetChanged();
         dataSet_data2.notifyDataSetChanged();
+        dataSet_data3.notifyDataSetChanged();
+        dataSet_data4.notifyDataSetChanged();
+        dataSet_data5.notifyDataSetChanged();
+        dataSet_data6.notifyDataSetChanged();
         lineData_data.notifyDataChanged();
         chartSleep.notifyDataSetChanged();
         chartSleep.setVisibleXRangeMinimum(0);
@@ -229,13 +323,21 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 try {
                     Log.i("READ_Prakhar_Samples", String.valueOf(countECG));
-                    readingCount.setText("Data per second :"+String.valueOf(countECG / 2));
+                    readingCount.setText("Data/s :"+String.valueOf(countECG / 2));
 //                                            prevCountECG = countECG;
-                    readingCountRed.setText("Data per second :"+String.valueOf(countECGRed / 2));
-                    readingCountBlue.setText("Data per second :"+String.valueOf(countECGBlue / 2));
+                    readingCountRed.setText("Data/s :"+String.valueOf(countECGRed / 2));
+                    readingCountBlue.setText("Data/s :"+String.valueOf(countECGBlue / 2));
+                    readingCountGreen.setText("Data/s :"+String.valueOf(countECGGreen / 2));
+                    readingCountYellow.setText("Data/s :"+String.valueOf(countECGYellow / 2));
+                    readingCountBlack.setText("Data/s :"+String.valueOf(countECGBlack / 2));
+                    readingCountViolet.setText("Data/s :"+String.valueOf(countECGViolet / 2));
                     countECG = 0;
                     countECGRed = 0;
                     countECGBlue = 0;
+                    countECGGreen = 0;
+                    countECGYellow = 0;
+                    countECGBlack = 0;
+                    countECGViolet = 0;
                     sleepHandler.postDelayed(this, 2000);
                 }catch (Exception e){
 
@@ -450,6 +552,234 @@ public class MainActivity extends AppCompatActivity {
                         }
                         Log.i("READ_PrakharECG__", String.valueOf(x_ecg));
 
+                    }else if(val20 == 2){
+
+                        //  Green color
+
+                        Log.i("READ_UI_DATA_SlIndex", "ind =  "+val20);
+
+                        Log.i("READ_UI_DATA_SlC", "CountECG =  "+countECG);
+
+                        ecgValue =  valx & (0xFFFFF);
+
+                        boolean negative = (ecgValue & (1 << 19)) != 0;
+
+                        int nativeInt;
+
+                        if (negative)
+                            nativeInt = ecgValue | ~((1 << 20) - 1);
+                        else
+                            nativeInt= ecgValue;
+
+                        ecgValue = nativeInt;
+
+//                    ecgValue = (data[1 + temp] & 0xff) << 8 | (data[0 + temp] & 0xff);
+//                                                    ecgValue = (data[1 + temp] & 0xff ) + (data[0 + temp]) ;
+//                    if ((ecgValue & 0x8000) != 0) {
+////                                                        Log.i("READ_Prakhar_Hellol","yes");
+//                        ecgValue = -(0x10000 - ecgValue);
+//                    }
+
+                        if (firstOpen) {
+                            ecg_y_min = (float) ecgValue;
+                            ecg_y_max = (float) ecgValue;
+                            firstOpen = false;
+                        }
+                        ecg_graph = (float) ecgValue;
+                        Log.i("READ_Prakhar_ECG_VALUEF", String.valueOf(ecg_graph));
+                        val[i] = (double) ecg_graph;
+                        ecg_y_max = Math.max(ecg_y_max, ecgValue);
+                        ecg_y_min = Math.min(ecg_y_min, ecgValue);
+                        Log.i("READ_UI_DATA_SlCMx", "ecg_y_max = "+ecg_y_max+" "+"ecg_y_min = "+ecg_y_min);
+//                        Log.i("READ_Prakhar_ECG_VALUEF", String.valueOf(ecg_graph));
+                        if (ecg_graph_update3) {
+                            entries_data3.set((int) x_ecg3, new Entry(x_ecg3, ecgValue));
+                        } else {
+                            entries_data3.add(new Entry(x_ecg3, ecgValue));
+                        }
+                        Log.i("READ_PrakharECG_", String.valueOf(ecg_graph) + " " + entries_data3.size());
+//                                                entries_ecg.add(new Entry(x_ecg, ecg_graph));
+                        x_ecg3 = x_ecg3 + 1f;
+                        countECG++;
+                        countECGGreen++;
+                        if (x_ecg3 == 1249) {
+                            x_ecg3 = 0;
+                            ecg_graph_update3 = true;
+                            //  entries_ecg.set(0,new Entry(x_ecg, ecg_graph));
+                        }
+                        Log.i("READ_PrakharECG__", String.valueOf(x_ecg3));
+
+                    }else if(val20 == 3){
+
+                        //  Green color
+
+                        Log.i("READ_UI_DATA_SlIndex", "ind =  "+val20);
+
+                        Log.i("READ_UI_DATA_SlC", "CountECG =  "+countECG);
+
+                        ecgValue =  valx & (0xFFFFF);
+
+                        boolean negative = (ecgValue & (1 << 19)) != 0;
+
+                        int nativeInt;
+
+                        if (negative)
+                            nativeInt = ecgValue | ~((1 << 20) - 1);
+                        else
+                            nativeInt= ecgValue;
+
+                        ecgValue = nativeInt;
+
+//                    ecgValue = (data[1 + temp] & 0xff) << 8 | (data[0 + temp] & 0xff);
+//                                                    ecgValue = (data[1 + temp] & 0xff ) + (data[0 + temp]) ;
+//                    if ((ecgValue & 0x8000) != 0) {
+////                                                        Log.i("READ_Prakhar_Hellol","yes");
+//                        ecgValue = -(0x10000 - ecgValue);
+//                    }
+
+                        if (firstOpen) {
+                            ecg_y_min = (float) ecgValue;
+                            ecg_y_max = (float) ecgValue;
+                            firstOpen = false;
+                        }
+                        ecg_graph = (float) ecgValue;
+                        Log.i("READ_Prakhar_ECG_VALUEF", String.valueOf(ecg_graph));
+                        val[i] = (double) ecg_graph;
+                        ecg_y_max = Math.max(ecg_y_max, ecgValue);
+                        ecg_y_min = Math.min(ecg_y_min, ecgValue);
+                        Log.i("READ_UI_DATA_SlCMx", "ecg_y_max = "+ecg_y_max+" "+"ecg_y_min = "+ecg_y_min);
+//                        Log.i("READ_Prakhar_ECG_VALUEF", String.valueOf(ecg_graph));
+                        if (ecg_graph_update4) {
+                            entries_data4.set((int) x_ecg4, new Entry(x_ecg4, ecgValue));
+                        } else {
+                            entries_data4.add(new Entry(x_ecg4, ecgValue));
+                        }
+                        Log.i("READ_PrakharECG_", String.valueOf(ecg_graph) + " " + entries_data4.size());
+//                                                entries_ecg.add(new Entry(x_ecg, ecg_graph));
+                        x_ecg4 = x_ecg4 + 1f;
+                        countECG++;
+                        countECGYellow++;
+                        if (x_ecg4 == 1249) {
+                            x_ecg4 = 0;
+                            ecg_graph_update4 = true;
+                            //  entries_ecg.set(0,new Entry(x_ecg, ecg_graph));
+                        }
+                        Log.i("READ_PrakharECG__", String.valueOf(x_ecg4));
+
+                    }else if(val20 == 4){
+
+                        //  Green color
+
+                        Log.i("READ_UI_DATA_SlIndex", "ind =  "+val20);
+
+                        Log.i("READ_UI_DATA_SlC", "CountECG =  "+countECG);
+
+                        ecgValue =  valx & (0xFFFFF);
+
+                        boolean negative = (ecgValue & (1 << 19)) != 0;
+
+                        int nativeInt;
+
+                        if (negative)
+                            nativeInt = ecgValue | ~((1 << 20) - 1);
+                        else
+                            nativeInt= ecgValue;
+
+                        ecgValue = nativeInt;
+
+//                    ecgValue = (data[1 + temp] & 0xff) << 8 | (data[0 + temp] & 0xff);
+//                                                    ecgValue = (data[1 + temp] & 0xff ) + (data[0 + temp]) ;
+//                    if ((ecgValue & 0x8000) != 0) {
+////                                                        Log.i("READ_Prakhar_Hellol","yes");
+//                        ecgValue = -(0x10000 - ecgValue);
+//                    }
+
+                        if (firstOpen) {
+                            ecg_y_min = (float) ecgValue;
+                            ecg_y_max = (float) ecgValue;
+                            firstOpen = false;
+                        }
+                        ecg_graph = (float) ecgValue;
+                        Log.i("READ_Prakhar_ECG_VALUEF", String.valueOf(ecg_graph));
+                        val[i] = (double) ecg_graph;
+                        ecg_y_max = Math.max(ecg_y_max, ecgValue);
+                        ecg_y_min = Math.min(ecg_y_min, ecgValue);
+                        Log.i("READ_UI_DATA_SlCMx", "ecg_y_max = "+ecg_y_max+" "+"ecg_y_min = "+ecg_y_min);
+//                        Log.i("READ_Prakhar_ECG_VALUEF", String.valueOf(ecg_graph));
+                        if (ecg_graph_update5) {
+                            entries_data5.set((int) x_ecg5, new Entry(x_ecg5, ecgValue));
+                        } else {
+                            entries_data5.add(new Entry(x_ecg5, ecgValue));
+                        }
+                        Log.i("READ_PrakharECG_", String.valueOf(ecg_graph) + " " + entries_data5.size());
+//                                                entries_ecg.add(new Entry(x_ecg, ecg_graph));
+                        x_ecg5 = x_ecg5 + 1f;
+                        countECG++;
+                        countECGBlack++;
+                        if (x_ecg5 == 1249) {
+                            x_ecg5 = 0;
+                            ecg_graph_update5 = true;
+                            //  entries_ecg.set(0,new Entry(x_ecg, ecg_graph));
+                        }
+                        Log.i("READ_PrakharECG__", String.valueOf(x_ecg5));
+
+                    }else if(val20 == 5){
+
+                        //  Green color
+
+                        Log.i("READ_UI_DATA_SlIndex", "ind =  "+val20);
+
+                        Log.i("READ_UI_DATA_SlC", "CountECG =  "+countECG);
+
+                        ecgValue =  valx & (0xFFFFF);
+
+                        boolean negative = (ecgValue & (1 << 19)) != 0;
+
+                        int nativeInt;
+
+                        if (negative)
+                            nativeInt = ecgValue | ~((1 << 20) - 1);
+                        else
+                            nativeInt= ecgValue;
+
+                        ecgValue = nativeInt;
+
+//                    ecgValue = (data[1 + temp] & 0xff) << 8 | (data[0 + temp] & 0xff);
+//                                                    ecgValue = (data[1 + temp] & 0xff ) + (data[0 + temp]) ;
+//                    if ((ecgValue & 0x8000) != 0) {
+////                                                        Log.i("READ_Prakhar_Hellol","yes");
+//                        ecgValue = -(0x10000 - ecgValue);
+//                    }
+
+                        if (firstOpen) {
+                            ecg_y_min = (float) ecgValue;
+                            ecg_y_max = (float) ecgValue;
+                            firstOpen = false;
+                        }
+                        ecg_graph = (float) ecgValue;
+                        Log.i("READ_Prakhar_ECG_VALUEF", String.valueOf(ecg_graph));
+                        val[i] = (double) ecg_graph;
+                        ecg_y_max = Math.max(ecg_y_max, ecgValue);
+                        ecg_y_min = Math.min(ecg_y_min, ecgValue);
+                        Log.i("READ_UI_DATA_SlCMx", "ecg_y_max = "+ecg_y_max+" "+"ecg_y_min = "+ecg_y_min);
+//                        Log.i("READ_Prakhar_ECG_VALUEF", String.valueOf(ecg_graph));
+                        if (ecg_graph_update6) {
+                            entries_data6.set((int) x_ecg6, new Entry(x_ecg6, ecgValue));
+                        } else {
+                            entries_data6.add(new Entry(x_ecg6, ecgValue));
+                        }
+                        Log.i("READ_PrakharECG_", String.valueOf(ecg_graph) + " " + entries_data6.size());
+//                                                entries_ecg.add(new Entry(x_ecg, ecg_graph));
+                        x_ecg6 = x_ecg6 + 1f;
+                        countECG++;
+                        countECGViolet++;
+                        if (x_ecg6 == 1249) {
+                            x_ecg6 = 0;
+                            ecg_graph_update6 = true;
+                            //  entries_ecg.set(0,new Entry(x_ecg, ecg_graph));
+                        }
+                        Log.i("READ_PrakharECG__", String.valueOf(x_ecg6));
+
                     }else{
 
                         // red color
@@ -587,6 +917,10 @@ public class MainActivity extends AppCompatActivity {
 
             dataSet_data.notifyDataSetChanged();
             dataSet_data2.notifyDataSetChanged();
+            dataSet_data3.notifyDataSetChanged();
+            dataSet_data4.notifyDataSetChanged();
+            dataSet_data5.notifyDataSetChanged();
+            dataSet_data6.notifyDataSetChanged();
             lineData_data.notifyDataChanged();
             chartSleep.notifyDataSetChanged();
             chartSleep.setVisibleXRangeMinimum(0);

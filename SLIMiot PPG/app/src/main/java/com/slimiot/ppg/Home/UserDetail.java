@@ -33,7 +33,7 @@ public class UserDetail extends AppCompatActivity {
         setContentView(R.layout.activity_user_detail);
         getSupportActionBar().hide();
         nextButton = findViewById(R.id.nextButton);
-        spinValues = new String[]{"UTF-8 (Comma Format)", "4 byte form"};
+        spinValues = new String[]{"4 byte form","UTF-8 (Comma Format)"};
         spinner = findViewById(R.id.dataFormatSpinner);
         sharedPreferences = this.getSharedPreferences("com.slimiot.ppg", MODE_PRIVATE);
         nextButton.setOnClickListener(new View.OnClickListener() {

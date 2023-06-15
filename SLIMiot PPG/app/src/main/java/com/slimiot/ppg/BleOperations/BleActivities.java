@@ -237,7 +237,10 @@ public class BleActivities {
         String successMessage = "ECG Service is on.";
         //  ********* Ring
 //        writeCharacteristic(hexCode, servicePowerOn, characteristicPowerOn, successMessage, "ECG");
-        notifyCharacteristic(serviceECG, characteristicECG, "ECG");
+//        notifyCharacteristic(serviceECG, characteristicECG, "ECG");
+
+        notifyCharacteristic(servicePPG, characteristicPPG, "ECG");
+
 
 //        notifyCharacteristic(serviceECG, "00002b18-0000-1000-8000-00805f9b34fb", "ECG");
 
